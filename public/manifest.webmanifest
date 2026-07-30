@@ -1,0 +1,12 @@
+{
+  "name": "BCA Domestic Tourism Intelligence Explorer",
+  "short_name": "BCA Tourism Explorer",
+  "description": "Interactive Geospatial Intelligence Platform for Indonesia's domestic tourism opportunity.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#005BAC",
+  "icons": [
+    { "src": "./logo/bca-logo.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
