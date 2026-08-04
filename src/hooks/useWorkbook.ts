@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import * as XLSX from "xlsx";
 import { extractRows, toNumber, toStr } from "@/utils/workbookParser";
 import type {
-  WorkbookData, Province, TripRecord, Destination, NationalKPI, QrisPoint, BcaIndicator, ReferenceRow, LoadStatus,
+  WorkbookData, Province, TripRecord, Destination, NationalKPI, QrisPoint, BcaIndicator, ReferenceRow,
+  DestinationGrowthRow, OutboundMixRow, QrisCrossBorder, IndicatorRoadmapRow, LoadStatus,
+  SimpleIndicatorRow, AccommodationTop10Hotel, AccommodationTop10Stay, AccommodationData,
 } from "@/types";
 
 const WORKBOOK_URL = `${import.meta.env.BASE_URL}excel/MASTER_TOURISM_DATABASE_FINAL.xlsx`;
@@ -197,5 +199,117 @@ function parseWorkbook(wb: XLSX.WorkBook): WorkbookData {
     url: toStr(r["URL"]),
   }));
 
-  return { provinces, trips, destinations, nationalKPI, qris, bca, references };
+  // 03_National_KPI — secondary block: "Destination growth projection 2026"
+  const growthRows = kpiSheet
+    ? extractRows(kpiSheet, ["Destination", "Share of respondents projecting significant 2026 growth (%)"])
+    : [];
+  const destinationGrowth2026: DestinationGrowthRow[] = growthRows.map((r) => ({
+    destination: toStr(r["Destination"]),
+    sharePct: toNumber(r["Share of respondents projecting significant 2026 growth (%)"]) ?? 0,
+    source: toStr(r["Source"]),
+  }));
+
+  // 03_National_KPI — secondary block: "Outbound travel destination mix"
+  const outboundRows = kpiSheet
+    ? extractRows(kpiSheet, ["Destination", "Share of outbound WNI trips (%)"])
+    : [];
+  const outboundMix: OutboundMixRow[] = outboundRows.map((r) => ({
+    destination: toStr(r["Destination"]),
+    sharePct: toNumber(r["Share of outbound WNI trips (%)"]) ?? 0,
+    source: toStr(r["Source"]),
+  }));
+
+  // 03_National_KPI — single row: QRIS Cross-Border live countries
+  let qrisCrossBorder: QrisCrossBorder | null = null;
+  if (kpiSheet) {
+    const grid = XLSX.utils.sheet_to_json<any[]>(kpiSheet, { header: 1, defval: null });
+    const row = grid.find((r) => r && String(r[0] ?? "").trim() === "QRIS Cross-Border live countries");
+    if (row) {
+      qrisCrossBorder = { countries: toStr(row[1]), source: toStr(row[2]) };
+    }
+  }
+
+  // 01_Indicator_Roadmap
+  const roadmapSheet = sheet("01_Indicator_Roadmap");
+  const roadmapRows = roadmapSheet
+    ? extractRows(roadmapSheet, ["Category", "Indicator Name", "Official Source"])
+    : [];
+  const indicatorRoadmap: IndicatorRoadmapRow[] = roadmapRows
+    .filter((r) => toStr(r["Indicator Name"]))
+    .map((r) => ({
+      category: toStr(r["Category"]),
+      indicator: toStr(r["Indicator Name"]),
+      officialSource: toStr(r["Official Source"]),
+      officialPublication: toStr(r["Official Publication"]),
+      geographicLevel: toStr(r["Geographic Level"]),
+      dataStatus: toStr(r["Data Status"]),
+      populatedInSheet: toStr(r["Populated In Sheet"]),
+    }));
+
+  // 11_Accommodation
+  const accSheet = sheet("11_Accommodation");
+  const accNationalRows = accSheet ? extractRows(accSheet, ["Indicator", "Value", "Year", "Official Source"]) : [];
+  const accNational: SimpleIndicatorRow[] = accNationalRows
+    .filter((r) => toStr(r["Indicator"]))
+    .map((r) => ({
+      indicator: toStr(r["Indicator"]), value: toStr(r["Value"]), period: toStr(r["Year"]),
+      source: toStr(r["Official Source"]), publication: toStr(r["Publication"]), url: toStr(r["URL"]),
+    }));
+
+  const accHotelRows = accSheet ? extractRows(accSheet, ["Province", "Star Hotels", "Total Accommodations"]) : [];
+  const top10Hotels: AccommodationTop10Hotel[] = accHotelRows
+    .filter((r) => toStr(r["Province"]))
+    .map((r) => ({
+      province: toStr(r["Province"]),
+      starHotels: toNumber(r["Star Hotels"]),
+      totalAccommodations: toNumber(r["Total Accommodations"]),
+    }));
+
+  const accStayRows = accSheet ? extractRows(accSheet, ["Province", "Avg. Length of Stay (nights)"]) : [];
+  const top10LengthOfStay: AccommodationTop10Stay[] = accStayRows
+    .filter((r) => toStr(r["Province"]))
+    .map((r) => ({
+      province: toStr(r["Province"]),
+      nights: toNumber(r["Avg. Length of Stay (nights)"]),
+      yoyChange: toStr(r["YoY Change"]),
+    }));
+
+  const accRoomRateRows = accSheet
+    ? extractRows(accSheet, ["Indicator", "Value", "Year", "Source (commercial, NOT official)"])
+    : [];
+  const roomRateCommercial: SimpleIndicatorRow | null = accRoomRateRows.length
+    ? {
+        indicator: toStr(accRoomRateRows[0]["Indicator"]), value: toStr(accRoomRateRows[0]["Value"]),
+        period: toStr(accRoomRateRows[0]["Year"]), source: toStr(accRoomRateRows[0]["Source (commercial, NOT official)"]),
+        publication: toStr(accRoomRateRows[0]["Publication"]), url: toStr(accRoomRateRows[0]["URL"]),
+      }
+    : null;
+
+  const accommodation: AccommodationData = { national: accNational, top10Hotels, top10LengthOfStay, roomRateCommercial };
+
+  // 12_Air_Transportation
+  const airSheet = sheet("12_Air_Transportation");
+  const airRows = airSheet ? extractRows(airSheet, ["Indicator", "Value", "Period", "Official Source"]) : [];
+  const airTransport: SimpleIndicatorRow[] = airRows
+    .filter((r) => toStr(r["Indicator"]))
+    .map((r) => ({
+      indicator: toStr(r["Indicator"]), value: toStr(r["Value"]), period: toStr(r["Period"]),
+      source: toStr(r["Official Source"]), publication: toStr(r["Publication"]), url: toStr(r["URL"]),
+    }));
+
+  // 13_Investment_Potential_Sector
+  const invSheet = sheet("13_Investment_Potential_Sector");
+  const invRows = invSheet ? extractRows(invSheet, ["Indicator", "Value", "Period", "Official Source"]) : [];
+  const investment: SimpleIndicatorRow[] = invRows
+    .filter((r) => toStr(r["Indicator"]))
+    .map((r) => ({
+      indicator: toStr(r["Indicator"]), value: toStr(r["Value"]), period: toStr(r["Period"]),
+      source: toStr(r["Official Source"]), publication: toStr(r["Publication"]), url: toStr(r["URL"]),
+    }));
+
+  return {
+    provinces, trips, destinations, nationalKPI, qris, bca, references,
+    destinationGrowth2026, outboundMix, qrisCrossBorder, indicatorRoadmap,
+    accommodation, airTransport, investment,
+  };
 }

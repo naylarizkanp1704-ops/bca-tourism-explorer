@@ -1,5 +1,5 @@
 export const MD_TABS = [
-  "Overview", "Province", "Destination", "Traveler", "Payment", "BCA Network", "Compare", "References",
+  "Overview", "Province", "Destination", "Payment", "BCA Network", "Compare", "References",
 ] as const;
 
 export type MDTab = (typeof MD_TABS)[number];

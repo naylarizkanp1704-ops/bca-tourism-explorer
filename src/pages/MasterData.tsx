@@ -7,7 +7,6 @@ import { Tabs, type MDTab } from "@/components/masterdata/Tabs";
 import { OverviewTab } from "@/components/masterdata/OverviewTab";
 import { ProvinceTab } from "@/components/masterdata/ProvinceTab";
 import { DestinationTab } from "@/components/masterdata/DestinationTab";
-import { TravelerTab } from "@/components/masterdata/TravelerTab";
 import { PaymentTab } from "@/components/masterdata/PaymentTab";
 import { BcaNetworkTab } from "@/components/masterdata/BcaNetworkTab";
 import { CompareTab } from "@/components/masterdata/CompareTab";
@@ -63,7 +62,6 @@ export default function MasterData() {
           {active === "Overview" && <OverviewTab filteredProvinces={filteredProvinces} />}
           {active === "Province" && <ProvinceTab filters={filters} selectedName={selectedName} setSelectedName={setSelectedName} />}
           {active === "Destination" && <DestinationTab filters={filters} />}
-          {active === "Traveler" && <TravelerTab />}
           {active === "Payment" && <PaymentTab />}
           {active === "BCA Network" && <BcaNetworkTab />}
           {active === "Compare" && <CompareTab />}

@@ -14,7 +14,7 @@ export default function Home() {
   const [hovered, setHovered] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
   const [layersOpen, setLayersOpen] = useState(false);
-  const [layers, setLayers] = useState<MapLayers>({ destinations: true, airports: false, intensity: true, bca: false });
+  const [layers, setLayers] = useState<MapLayers>({ destinations: true, airports: false, intensity: true });
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
   const [heroVisible, setHeroVisible] = useState(true);
 

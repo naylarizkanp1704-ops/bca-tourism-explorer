@@ -10,6 +10,7 @@ import { Navbar } from "@/components/layout/Navbar";
 // satisfies the "lazy load pages / lazy load heavy components" requirement.
 const Home = lazy(() => import("@/pages/Home"));
 const MasterData = lazy(() => import("@/pages/MasterData"));
+const Insights = lazy(() => import("@/pages/Insights"));
 const About = lazy(() => import("@/pages/About"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
@@ -52,6 +53,7 @@ function AppShell() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/master-data" element={<MasterData />} />
+            <Route path="/insights" element={<Insights />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

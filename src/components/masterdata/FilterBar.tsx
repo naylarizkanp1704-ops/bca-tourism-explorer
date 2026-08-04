@@ -65,8 +65,8 @@ export function FilterBar({
         Reset Filter
       </button>
       <p className="w-full text-[10px] text-bca-sub pt-1">
-        Traveler Type &amp; Payment Method filters are not applied here — those breakdowns are only published nationally
-        (not by province) in the current workbook. See the Payment and Traveler tabs for what is available.
+        Payment Method filter is not applied here — that breakdown is only published nationally (not by province) in
+        the current workbook. See the Payment tab for what is available.
       </p>
     </GlassCard>
   );

@@ -37,9 +37,11 @@ export function OverviewTab({ filteredProvinces }: { filteredProvinces: Province
           <p>This Master Data Center exposes every verified dataset behind the recommendation — nothing here is estimated.</p>
           <p>Tabs with real data: <b>Province</b>, <b>Destination</b>, <b>Payment (national)</b>, <b>References</b>.</p>
           <p>
-            Tabs that honestly say &quot;not yet available&quot;: <b>Traveler</b> demographics and <b>BCA Network</b>{" "}
-            branch-level coverage — the underlying official sources are identified in the workbook&apos;s Indicator
-            Roadmap, just not pulled yet.
+            <b>BCA Network</b> shows real ecosystem numbers but honestly discloses what it can&apos;t compute (branch-level
+            coverage) — the underlying official source is identified in the workbook&apos;s Indicator Roadmap, just
+            not pulled yet. Traveler demographic breakdowns were searched for this build but no reliable 2024
+            official figures could be verified, so that tab was removed rather than left empty — see the Insights
+            page for what the search did surface (accommodation, air transport, investment).
           </p>
         </div>
       </GlassCard>

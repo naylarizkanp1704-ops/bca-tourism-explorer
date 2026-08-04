@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { MapPin, Plane, TrendingUp, Building2 } from "lucide-react";
+import { MapPin, Plane, TrendingUp } from "lucide-react";
 import type { MapLayers } from "@/types";
 
 interface Props {
@@ -12,7 +12,6 @@ const ITEMS = [
   { key: "destinations" as const, label: "Tourism Destination", icon: MapPin, color: "#00AEEF" },
   { key: "airports" as const, label: "Main Airport", icon: Plane, color: "#7C3AED" },
   { key: "intensity" as const, label: "Traveler Intensity", icon: TrendingUp, color: "#005BAC" },
-  { key: "bca" as const, label: "BCA Branch", icon: Building2, color: "#22C55E", disabled: true },
 ];
 
 export function LayerPanel({ open, layers, setLayers }: Props) {
@@ -30,13 +29,10 @@ export function LayerPanel({ open, layers, setLayers }: Props) {
           {ITEMS.map((it) => (
             <label
               key={it.key}
-              className={`flex items-center gap-3 px-2 py-2.5 rounded-xl transition-colors duration-150 ${
-                it.disabled ? "opacity-50 cursor-not-allowed" : "hover:bg-bca-soft cursor-pointer"
-              }`}
+              className="flex items-center gap-3 px-2 py-2.5 rounded-xl transition-colors duration-150 hover:bg-bca-soft cursor-pointer"
             >
               <input
                 type="checkbox"
-                disabled={it.disabled}
                 checked={!!layers[it.key]}
                 onChange={() => setLayers((s) => ({ ...s, [it.key]: !s[it.key] }))}
                 className="accent-bca-primary w-4 h-4"
@@ -46,10 +42,6 @@ export function LayerPanel({ open, layers, setLayers }: Props) {
               <span className="text-sm text-bca-ink">{it.label}</span>
             </label>
           ))}
-          <p className="text-[10px] text-bca-sub px-2 pt-1.5 leading-relaxed">
-            BCA branch coordinates are not yet available in the workbook — this layer stays disabled so the map never
-            shows invented locations.
-          </p>
         </motion.div>
       )}
     </AnimatePresence>

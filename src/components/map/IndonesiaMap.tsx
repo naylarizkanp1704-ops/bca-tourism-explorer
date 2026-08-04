@@ -15,6 +15,7 @@ interface Props {
 const BCA_PRIMARY = "#005BAC";
 const BCA_SECONDARY = "#00AEEF";
 const BCA_WARNING = "#F59E0B";
+const AIRPORT_PURPLE = "#7C3AED";
 
 function getZoomTransform(bbox: [[number, number], [number, number]] | undefined, vbW: number, vbH: number) {
   if (!bbox) return { scale: 1, tx: 0, ty: 0 };
@@ -53,6 +54,10 @@ export function IndonesiaMap({ hovered, setHovered, selected, onSelect, layers, 
   const visibleDestinations = layers.destinations && selected
     ? data.destinations.filter((d) => d.province === selected)
     : [];
+
+  const visibleAirport = layers.airports && selected
+    ? data.provinces.find((p) => p.province === selected && p.airport)
+    : undefined;
 
   return (
     <svg
@@ -109,6 +114,25 @@ export function IndonesiaMap({ hovered, setHovered, selected, onSelect, layers, 
             </motion.g>
           );
         })}
+        {visibleAirport && (() => {
+          const [ax, ay] = geo.project(visibleAirport.lon, visibleAirport.lat);
+          const s = 3.2 / zoom.scale;
+          return (
+            <motion.g
+              transform={`translate(${ax}, ${ay})`}
+              initial={{ opacity: 0, scale: 0.3 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <title>{visibleAirport.airport}</title>
+              <rect
+                x={-s / 2} y={-s / 2} width={s} height={s}
+                fill={AIRPORT_PURPLE} stroke="#ffffff" strokeWidth={0.5 / zoom.scale}
+                transform={`rotate(45)`}
+              />
+            </motion.g>
+          );
+        })()}
       </motion.g>
     </svg>
   );

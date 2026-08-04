@@ -59,7 +59,7 @@ export function CompareTab() {
       </table>
       <p className="text-[10px] text-bca-sub mt-4">
         Traveler profile and payment-behaviour comparison are omitted — those breakdowns are not published by province
-        (see Payment / Traveler tabs).
+        (see the Payment tab, and the Insights page for national-level context).
       </p>
     </GlassCard>
   );
