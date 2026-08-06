@@ -6,6 +6,7 @@ import type { IndicatorRoadmapRow } from "@/types";
 export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] }) {
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<"All" | "Populated" | "Pending">("All");
+  const STATUS_LABEL_ID: Record<"All" | "Populated" | "Pending", string> = { All: "Semua", Populated: "Terisi", Pending: "Pending" };
 
   const filtered = useMemo(() => {
     return rows
@@ -23,7 +24,7 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
     <GlassCard className="p-5 overflow-x-auto">
       <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
         <p className="text-xs font-semibold text-bca-ink">
-          {populatedCount} of {rows.length} indicators populated with verified data
+          {populatedCount} dari {rows.length} indikator terisi data terverifikasi
         </p>
         <div className="flex items-center gap-2">
           <div className="relative">
@@ -31,7 +32,7 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search indicator..."
+              placeholder="Cari indikator..."
               className="text-xs bg-bca-soft border border-bca-border rounded-lg pl-8 pr-3 py-2 outline-none focus:border-bca-primary"
             />
           </div>
@@ -43,7 +44,7 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
                 statusFilter === s ? "bg-bca-primary border-bca-primary text-white" : "border-bca-border text-bca-sub"
               }`}
             >
-              {s}
+              {STATUS_LABEL_ID[s]}
             </button>
           ))}
         </div>
@@ -51,9 +52,9 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
       <table className="w-full text-xs min-w-[720px]">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Category</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Indicator</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Official Source</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Kategori</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Indikator</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Sumber Resmi</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Level</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Status</th>
           </tr>
@@ -71,7 +72,7 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
                   <span
                     className={`text-[10px] font-semibold px-2 py-1 rounded-full text-white ${populated ? "bg-bca-accent" : "bg-slate-400"}`}
                   >
-                    {populated ? "Populated" : "Pending"}
+                    {populated ? "Terisi" : "Pending"}
                   </span>
                 </td>
               </tr>
@@ -80,8 +81,8 @@ export function IndicatorRoadmapTable({ rows }: { rows: IndicatorRoadmapRow[] })
         </tbody>
       </table>
       <p className="text-[10px] text-bca-sub mt-3">
-        This is a planning catalog, not a data table — it tells you which official source to pull next for indicators
-        not yet populated, so nothing here is guessed or estimated.
+        Ini katalog perencanaan, bukan tabel data — menunjukkan sumber resmi mana yang perlu ditarik selanjutnya
+        untuk indikator yang belum terisi, jadi tidak ada yang ditebak atau diestimasi di sini.
       </p>
     </GlassCard>
   );

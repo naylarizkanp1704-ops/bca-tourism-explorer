@@ -19,13 +19,13 @@ export function CompareTab() {
   const destB = data.destinations.filter((d) => d.province === b).length;
 
   const rows: [string, string, string][] = [
-    ["Population", fmtCompact(provA?.population), fmtCompact(provB?.population)],
-    ["Trips Jan-Jun 2025", fmtCompact(tA?.trips2025), fmtCompact(tB?.trips2025)],
-    ["Growth vs 2024", `+${tA?.growth ?? "-"}%`, `+${tB?.growth ?? "-"}%`],
-    ["KSPN Priority", String(provA?.kspn || "").startsWith("Y") ? "Yes" : "No", String(provB?.kspn || "").startsWith("Y") ? "Yes" : "No"],
-    ["Destinations tracked", String(destA), String(destB)],
-    ["Main tourism hub", provA?.hub || "-", provB?.hub || "-"],
-    ["Opportunity tag", provA ? opportunityFlag(provA, data).label : "-", provB ? opportunityFlag(provB, data).label : "-"],
+    ["Populasi", fmtCompact(provA?.population), fmtCompact(provB?.population)],
+    ["Trip Jan-Jun 2025", fmtCompact(tA?.trips2025), fmtCompact(tB?.trips2025)],
+    ["Pertumbuhan vs 2024", `+${tA?.growth ?? "-"}%`, `+${tB?.growth ?? "-"}%`],
+    ["Prioritas KSPN", String(provA?.kspn || "").startsWith("Y") ? "Ya" : "Tidak", String(provB?.kspn || "").startsWith("Y") ? "Ya" : "Tidak"],
+    ["Destinasi tercatat", String(destA), String(destB)],
+    ["Hub pariwisata utama", provA?.hub || "-", provB?.hub || "-"],
+    ["Tag Opportunity", provA ? opportunityFlag(provA, data).label : "-", provB ? opportunityFlag(provB, data).label : "-"],
   ];
 
   return (
@@ -42,7 +42,7 @@ export function CompareTab() {
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-2.5">Metric</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-2.5">Metrik</th>
             <th className="text-left text-[10px] font-semibold uppercase px-3 py-2.5 text-bca-primary">{a}</th>
             <th className="text-left text-[10px] font-semibold uppercase px-3 py-2.5 text-bca-secondary">{b}</th>
           </tr>
@@ -58,8 +58,8 @@ export function CompareTab() {
         </tbody>
       </table>
       <p className="text-[10px] text-bca-sub mt-4">
-        Traveler profile and payment-behaviour comparison are omitted — those breakdowns are not published by province
-        (see the Payment tab, and the Insights page for national-level context).
+        Perbandingan profil traveler dan perilaku pembayaran tidak ditampilkan — breakdown itu tidak dipublikasikan
+        per provinsi (lihat tab Payment, dan halaman Insights untuk konteks level nasional).
       </p>
     </GlassCard>
   );

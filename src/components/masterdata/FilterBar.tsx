@@ -24,7 +24,7 @@ export function FilterBar({
         aria-label="Filter by province"
         className="text-xs font-medium bg-bca-soft border border-bca-border rounded-xl px-3 py-2.5 outline-none focus:border-bca-primary"
       >
-        <option value="All">All Provinces</option>
+        <option value="All">Semua Provinsi</option>
         {data?.provinces.map((p) => (
           <option key={p.province} value={p.province}>{p.province}</option>
         ))}
@@ -36,7 +36,7 @@ export function FilterBar({
         className="text-xs font-medium bg-bca-soft border border-bca-border rounded-xl px-3 py-2.5 outline-none focus:border-bca-primary"
       >
         {CATEGORIES.map((c) => (
-          <option key={c} value={c}>{c === "All" ? "All Destination Categories" : c}</option>
+          <option key={c} value={c}>{c === "All" ? "Semua Kategori Destinasi" : c}</option>
         ))}
       </select>
       <select
@@ -53,7 +53,7 @@ export function FilterBar({
         <input
           value={filters.search}
           onChange={(e) => setFilters((s) => ({ ...s, search: e.target.value }))}
-          placeholder="Search province or destination..."
+          placeholder="Cari provinsi atau destinasi..."
           aria-label="Search"
           className="w-full text-xs bg-bca-soft border border-bca-border rounded-xl pl-8 pr-3 py-2.5 outline-none focus:border-bca-primary"
         />
@@ -65,8 +65,8 @@ export function FilterBar({
         Reset Filter
       </button>
       <p className="w-full text-[10px] text-bca-sub pt-1">
-        Payment Method filter is not applied here — that breakdown is only published nationally (not by province) in
-        the current workbook. See the Payment tab for what is available.
+        Filter Metode Pembayaran tidak diterapkan di sini — breakdown itu hanya dipublikasikan secara nasional (bukan
+        per provinsi) di workbook saat ini. Lihat tab Payment untuk data yang tersedia.
       </p>
     </GlassCard>
   );

@@ -5,6 +5,8 @@ import type {
   WorkbookData, Province, TripRecord, Destination, NationalKPI, QrisPoint, BcaIndicator, ReferenceRow,
   DestinationGrowthRow, OutboundMixRow, QrisCrossBorder, IndicatorRoadmapRow, LoadStatus,
   SimpleIndicatorRow, AccommodationTop10Hotel, AccommodationTop10Stay, AccommodationData,
+  IncomeStatementRow, CreditPortfolioRow, FinancialData,
+  ProjectionInputRow, ProjectionAssumptionRow, ProjectionScenarioRow, ProjectionModelData,
 } from "@/types";
 
 const WORKBOOK_URL = `${import.meta.env.BASE_URL}excel/MASTER_TOURISM_DATABASE_FINAL.xlsx`;
@@ -307,9 +309,62 @@ function parseWorkbook(wb: XLSX.WorkBook): WorkbookData {
       source: toStr(r["Official Source"]), publication: toStr(r["Publication"]), url: toStr(r["URL"]),
     }));
 
+  // 14_BCA_Financial_Statements
+  const finSheet = sheet("14_BCA_Financial_Statements");
+  const incomeRows = finSheet ? extractRows(finSheet, ["Line Item", "FY2024", "FY2023", "YoY Growth"]) : [];
+  const incomeStatement: IncomeStatementRow[] = incomeRows
+    .filter((r) => toStr(r["Line Item"]))
+    .map((r) => ({
+      lineItem: toStr(r["Line Item"]), fy2024: toStr(r["FY2024"]), fy2023: toStr(r["FY2023"]),
+      yoyGrowth: toStr(r["YoY Growth"]),
+    }));
+
+  const creditRows = finSheet ? extractRows(finSheet, ["Line Item", "Value", "YoY Growth", "% of Total Credit"]) : [];
+  const creditPortfolio: CreditPortfolioRow[] = creditRows
+    .filter((r) => toStr(r["Line Item"]))
+    .map((r) => ({
+      lineItem: toStr(r["Line Item"]), value: toStr(r["Value"]), yoyGrowth: toStr(r["YoY Growth"]),
+      pctOfTotal: toStr(r["% of Total Credit"]),
+    }));
+
+  const financials: FinancialData = { incomeStatement, creditPortfolio };
+
+  // 15_Financial_Projection_Model
+  const projSheet = sheet("15_Financial_Projection_Model");
+  const inputRows = projSheet ? extractRows(projSheet, ["Input", "Value", "Type", "Official Source"]) : [];
+  const officialInputs: ProjectionInputRow[] = inputRows
+    .filter((r) => toStr(r["Input"]))
+    .map((r) => ({
+      input: toStr(r["Input"]), value: toStr(r["Value"]), type: toStr(r["Type"]),
+      source: toStr(r["Official Source"]), publication: toStr(r["Publication"]), url: toStr(r["URL"]),
+    }));
+
+  const assumptionRows = projSheet
+    ? extractRows(projSheet, ["Assumption", "Low Case", "Base Case", "High Case"])
+    : [];
+  const assumptions: ProjectionAssumptionRow[] = assumptionRows
+    .filter((r) => toStr(r["Assumption"]))
+    .map((r) => ({
+      assumption: toStr(r["Assumption"]), low: toStr(r["Low Case"]), base: toStr(r["Base Case"]),
+      high: toStr(r["High Case"]), rationale: toStr(r["Rationale (team judgment, not sourced)"]),
+    }));
+
+  const scenarioRows = projSheet
+    ? extractRows(projSheet, ["Scenario", "Assumed BCA Acquiring Share"])
+    : [];
+  const scenarios: ProjectionScenarioRow[] = scenarioRows
+    .filter((r) => toStr(r["Scenario"]))
+    .map((r) => ({
+      scenario: toStr(r["Scenario"]), share: toStr(r["Assumed BCA Acquiring Share"]),
+      growth: toStr(r["Assumed Incremental QRIS Growth (Tourism Corridor)"]),
+      revenueRange: toStr(r["Illustrative Annual Revenue Range for BCA"]), basis: toStr(r["Basis"]),
+    }));
+
+  const projectionModel: ProjectionModelData = { officialInputs, assumptions, scenarios };
+
   return {
     provinces, trips, destinations, nationalKPI, qris, bca, references,
     destinationGrowth2026, outboundMix, qrisCrossBorder, indicatorRoadmap,
-    accommodation, airTransport, investment,
+    accommodation, airTransport, investment, financials, projectionModel,
   };
 }

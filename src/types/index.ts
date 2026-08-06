@@ -112,6 +112,56 @@ export interface AccommodationData {
   roomRateCommercial: SimpleIndicatorRow | null;
 }
 
+export interface IncomeStatementRow {
+  lineItem: string;
+  fy2024: string;
+  fy2023: string;
+  yoyGrowth: string;
+}
+
+export interface CreditPortfolioRow {
+  lineItem: string;
+  value: string;
+  yoyGrowth: string;
+  pctOfTotal: string;
+}
+
+export interface ProjectionInputRow {
+  input: string;
+  value: string;
+  type: string;
+  source: string;
+  publication: string;
+  url: string;
+}
+
+export interface ProjectionAssumptionRow {
+  assumption: string;
+  low: string;
+  base: string;
+  high: string;
+  rationale: string;
+}
+
+export interface ProjectionScenarioRow {
+  scenario: string;
+  share: string;
+  growth: string;
+  revenueRange: string;
+  basis: string;
+}
+
+export interface FinancialData {
+  incomeStatement: IncomeStatementRow[];
+  creditPortfolio: CreditPortfolioRow[];
+}
+
+export interface ProjectionModelData {
+  officialInputs: ProjectionInputRow[];
+  assumptions: ProjectionAssumptionRow[];
+  scenarios: ProjectionScenarioRow[];
+}
+
 export interface WorkbookData {
   provinces: Province[];
   trips: Record<string, TripRecord>;
@@ -127,6 +177,8 @@ export interface WorkbookData {
   accommodation: AccommodationData;
   airTransport: SimpleIndicatorRow[];
   investment: SimpleIndicatorRow[];
+  financials: FinancialData;
+  projectionModel: ProjectionModelData;
 }
 
 export type LoadStatus = "idle" | "loading" | "ready" | "error";

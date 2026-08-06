@@ -83,7 +83,7 @@ export default function Home() {
       <Sidebar provinceName={selected} onClose={() => setSelected(null)} />
 
       <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-10 text-[10px] text-bca-sub/70 hidden md:block">
-        Doweldowin Team &middot; BCA Business Case Competition &middot; Data: MASTER_TOURISM_DATABASE_FINAL.xlsx
+        Duwellduwin Team &middot; Universitas Gadjah Mada &middot; Victoria, Nayla &amp; Fadhila &middot; BCA Business Case Competition &middot; Data: MASTER_TOURISM_DATABASE_FINAL.xlsx
       </div>
     </motion.main>
   );

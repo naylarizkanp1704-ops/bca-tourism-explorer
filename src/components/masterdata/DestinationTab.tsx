@@ -19,11 +19,11 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
   return (
     <GlassCard className="p-5 overflow-x-auto">
       <div className="flex items-center justify-between mb-3 gap-3">
-        <p className="text-xs font-semibold text-bca-ink">{rows.length} destinations shown</p>
+        <p className="text-xs font-semibold text-bca-ink">{rows.length} destinasi ditampilkan</p>
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Search within results..."
+          placeholder="Cari dalam hasil..."
           className="text-xs bg-bca-soft border border-bca-border rounded-lg px-3 py-1.5 outline-none focus:border-bca-primary"
         />
         <button
@@ -31,7 +31,7 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
             downloadCSV(
               "destination_master.csv",
               ["name", "province", "categories", "unesco", "kspn"],
-              rows.map((r) => ({ ...r, categories: r.categories.join(" | "), unesco: r.unesco ? "Yes" : "No", kspn: r.kspn ? "Yes" : "No" }))
+              rows.map((r) => ({ ...r, categories: r.categories.join(" | "), unesco: r.unesco ? "Ya" : "Tidak", kspn: r.kspn ? "Ya" : "Tidak" }))
             )
           }
           className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border text-bca-sub hover:text-bca-primary hover:border-bca-primary transition-colors duration-200 shrink-0"
@@ -42,9 +42,9 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
       <table className="w-full text-xs min-w-[600px]">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Destination</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Province</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Category</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Destinasi</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Provinsi</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Kategori</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">UNESCO</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">KSPN</th>
           </tr>
@@ -62,9 +62,9 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
         </tbody>
       </table>
       <p className="text-[10px] text-bca-sub mt-3">
-        Estimated Visitors, Average Spending, Nearby Airport and Nearby BCA Branch columns are intentionally omitted — no
-        official publication reports these at individual-destination level for the full 106-destination set (see
-        01_Indicator_Roadmap in the workbook). Showing them would mean guessing.
+        Kolom Estimated Visitors, Average Spending, Nearby Airport dan Nearby BCA Branch sengaja tidak dicantumkan —
+        tidak ada publikasi resmi yang melaporkan ini di tingkat destinasi individual untuk keseluruhan 106 destinasi
+        (lihat 01_Indicator_Roadmap di workbook). Menampilkannya berarti menebak.
       </p>
     </GlassCard>
   );

@@ -25,44 +25,44 @@ export default function Insights() {
     >
       <div className="min-h-full pb-20">
         <PageHeader
-          eyebrow="Beyond the map"
+          eyebrow="Di luar peta"
           title="Global Insights"
-          desc="National-level context, outbound travel patterns, and the full evidence roadmap behind this product — data that doesn't map to a single province."
+          desc="Konteks level nasional, pola perjalanan outbound, dan roadmap bukti lengkap di balik produk ini — data yang tidak terpetakan ke satu provinsi tertentu."
         />
 
         <div className="max-w-[1200px] mx-auto px-4 md:px-0 space-y-12">
           <section>
-            <SectionTitle>National &amp; International Context</SectionTitle>
+            <SectionTitle>Konteks Nasional &amp; Internasional</SectionTitle>
             <NationalKpiGrid items={data.nationalKPI} />
           </section>
 
           <section>
-            <SectionTitle>Destination Growth Projection 2026</SectionTitle>
+            <SectionTitle>Proyeksi Pertumbuhan Destinasi 2026</SectionTitle>
             <DestinationGrowthChart rows={data.destinationGrowth2026} />
           </section>
 
           <section>
-            <SectionTitle>Outbound Travel</SectionTitle>
+            <SectionTitle>Perjalanan Outbound</SectionTitle>
             <OutboundTravelPanel mix={data.outboundMix} crossBorder={data.qrisCrossBorder} />
           </section>
 
           <section>
-            <SectionTitle>Accommodation &amp; Hospitality</SectionTitle>
+            <SectionTitle>Akomodasi &amp; Perhotelan</SectionTitle>
             <AccommodationSection data={data.accommodation} />
           </section>
 
           <section>
-            <SectionTitle>Air Transportation</SectionTitle>
+            <SectionTitle>Transportasi Udara</SectionTitle>
             <SimpleIndicatorList items={data.airTransport} />
           </section>
 
           <section>
-            <SectionTitle>Investment &amp; Potential Sector</SectionTitle>
+            <SectionTitle>Investasi &amp; Sektor Potensial</SectionTitle>
             <SimpleIndicatorList items={data.investment} />
           </section>
 
           <section>
-            <SectionTitle>Indicator Roadmap</SectionTitle>
+            <SectionTitle>Roadmap Indikator</SectionTitle>
             <IndicatorRoadmapTable rows={data.indicatorRoadmap} />
           </section>
         </div>

@@ -57,7 +57,7 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
             <div className="grid grid-cols-3 gap-3">
               <Stat label="Populasi" value={fmtCompact(province.population)} />
               <Stat label="Trip '25" value={fmtCompact(trip?.trips2025)} />
-              <Stat label="Growth" value={trip ? `+${trip.growth}%` : "-"} accent />
+              <Stat label="Pertumbuhan" value={trip ? `+${trip.growth}%` : "-"} accent />
             </div>
 
             {chartData.length > 0 && (
@@ -107,7 +107,7 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
             )}
 
             <div className="rounded-xl p-4 bg-gradient-to-br from-bca-primary/10 to-bca-secondary/10">
-              <p className="text-[11px] font-semibold text-bca-primary uppercase tracking-wide mb-1.5">So what for BCA?</p>
+              <p className="text-[11px] font-semibold text-bca-primary uppercase tracking-wide mb-1.5">Artinya Buat BCA?</p>
               <p className="text-[13px] text-bca-ink leading-relaxed">
                 {String(province.kspn || "").startsWith("Y")
                   ? "Prioritaskan ekspansi QRIS merchant & travel-card bundling di destinasi KSPN provinsi ini sebelum kompetitor masuk."

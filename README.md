@@ -1,6 +1,6 @@
 # BCA Domestic Tourism Intelligence Explorer
 
-Interactive Geospatial Intelligence Platform built for the **BCA Business Case Competition** by **Doweldowin Team**.
+Interactive Geospatial Intelligence Platform built for the **BCA Business Case Competition** by **Duwellduwin Team (Universitas Gadjah Mada — Victoria, Nayla, Fadhila)**.
 
 A map-first evidence explorer for Indonesia's domestic tourism opportunity — every figure shown is either reused verbatim from a verified source, or sourced live from `MASTER_TOURISM_DATABASE_FINAL.xlsx`, parsed in the browser at runtime. Nothing tourism-related is hardcoded in source code.
 
@@ -78,7 +78,7 @@ BPS · Bank Indonesia · Kementerian Pariwisata RI · Kementerian Dalam Negeri (
 
 ## 🙋 Credits
 
-**Doweldowin Team** — BCA Business Case Competition.
+**Duwellduwin Team (Universitas Gadjah Mada — Victoria, Nayla, Fadhila)** — BCA Business Case Competition.
 
 ## 📄 License
 

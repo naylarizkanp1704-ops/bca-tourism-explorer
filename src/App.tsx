@@ -11,6 +11,7 @@ import { Navbar } from "@/components/layout/Navbar";
 const Home = lazy(() => import("@/pages/Home"));
 const MasterData = lazy(() => import("@/pages/MasterData"));
 const Insights = lazy(() => import("@/pages/Insights"));
+const Financials = lazy(() => import("@/pages/Financials"));
 const About = lazy(() => import("@/pages/About"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
@@ -25,16 +26,16 @@ function AppShell() {
     return (
       <div className="w-full h-screen flex flex-col items-center justify-center bg-bca-soft px-6 text-center">
         <img src={`${import.meta.env.BASE_URL}logo/bca-logo.svg`} alt="BCA" className="h-8 mb-6 opacity-80" />
-        <h1 className="text-xl font-bold text-bca-ink">Couldn't load the tourism workbook</h1>
+        <h1 className="text-xl font-bold text-bca-ink">Workbook pariwisata gagal dimuat</h1>
         <p className="text-sm text-bca-sub mt-2 max-w-md">
-          {error || "MASTER_TOURISM_DATABASE_FINAL.xlsx could not be fetched or parsed."} Make sure the file exists at{" "}
+          {error || "MASTER_TOURISM_DATABASE_FINAL.xlsx tidak bisa diambil atau diparsing."} Pastikan file ada di{" "}
           <code className="bg-white px-1.5 py-0.5 rounded border border-bca-border">/public/excel/</code>.
         </p>
         <button
           onClick={() => window.location.reload()}
           className="mt-6 bg-bca-primary text-white text-sm font-semibold px-6 py-3 rounded-full hover:opacity-90 transition-opacity"
         >
-          Retry
+          Coba Lagi
         </button>
       </div>
     );
@@ -45,15 +46,16 @@ function AppShell() {
       <Navbar />
       {geoError && (
         <div className="absolute top-[68px] left-1/2 -translate-x-1/2 z-40 bg-red-50 border border-red-200 text-red-700 text-[11px] px-3 py-1.5 rounded-full">
-          Map geometry failed to load — province shapes may be unavailable. ({geoError})
+          Geometri peta gagal dimuat — bentuk provinsi mungkin tidak tersedia. ({geoError})
         </div>
       )}
-      <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-bca-sub text-sm">Loading page&hellip;</div>}>
+      <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-bca-sub text-sm">Memuat halaman&hellip;</div>}>
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/master-data" element={<MasterData />} />
             <Route path="/insights" element={<Insights />} />
+            <Route path="/financials" element={<Financials />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -10,7 +10,7 @@ export function medianGrowth(data: WorkbookData): number {
 }
 
 export interface OpportunityFlag {
-  label: "High Opportunity" | "Medium Opportunity" | "Watch List" | "Unknown";
+  label: "Peluang Tinggi" | "Peluang Sedang" | "Perlu Dipantau" | "Belum Diketahui";
   color: string;
 }
 
@@ -23,13 +23,13 @@ export interface OpportunityFlag {
  */
 export function opportunityFlag(prov: Province, data: WorkbookData): OpportunityFlag {
   const t = data.trips[prov.province];
-  if (!t) return { label: "Unknown", color: "#94A3B8" };
+  if (!t) return { label: "Belum Diketahui", color: "#94A3B8" };
   const med = medianGrowth(data);
   const highGrowth = t.growth > med;
   const kspn = String(prov.kspn || "").startsWith("Y");
-  if (highGrowth && kspn) return { label: "High Opportunity", color: "#22C55E" };
-  if (highGrowth || kspn) return { label: "Medium Opportunity", color: "#F59E0B" };
-  return { label: "Watch List", color: "#94A3B8" };
+  if (highGrowth && kspn) return { label: "Peluang Tinggi", color: "#22C55E" };
+  if (highGrowth || kspn) return { label: "Peluang Sedang", color: "#F59E0B" };
+  return { label: "Perlu Dipantau", color: "#94A3B8" };
 }
 
 export function buildInsight(prov: Province, trip: TripRecord | undefined, nationalGrowth: number): string[] {

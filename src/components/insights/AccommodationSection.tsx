@@ -62,7 +62,7 @@ export function AccommodationSection({ data }: { data: AccommodationData }) {
           <div className="flex items-start gap-3">
             <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <p className="text-xs font-semibold text-amber-800">Non-Official / Commercial Source</p>
+              <p className="text-xs font-semibold text-amber-800">Sumber Non-Resmi / Komersial</p>
               <p className="text-sm font-bold text-bca-ink mt-1">{data.roomRateCommercial.value}</p>
               <p className="text-xs text-bca-ink mt-1">{data.roomRateCommercial.indicator}</p>
               <p className="text-[11px] text-amber-700 mt-2">

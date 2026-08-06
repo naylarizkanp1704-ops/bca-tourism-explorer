@@ -45,9 +45,9 @@ export default function MasterData() {
     >
       <div className="min-h-full pb-16">
         <PageHeader
-          eyebrow="Evidence Center"
+          eyebrow="Pusat Bukti"
           title="Master Data Center"
-          desc="Explore every supporting dataset used in the recommendation — sourced, filterable, and exportable."
+          desc="Jelajahi setiap dataset pendukung yang digunakan dalam rekomendasi — bersumber jelas, dapat difilter, dan dapat diekspor."
         />
         <FilterBar filters={filters} setFilters={setFilters} onReset={() => setFilters(DEFAULT_FILTERS)} />
         <KpiCards filteredProvinces={filteredProvinces} filteredDestinations={filteredDestinations} />

@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 
 const LINKS = [
-  { to: "/", label: "Home" },
+  { to: "/", label: "Beranda" },
   { to: "/master-data", label: "Master Data" },
   { to: "/insights", label: "Insights" },
-  { to: "/about", label: "About Data" },
+  { to: "/financials", label: "Financials" },
+  { to: "/about", label: "Tentang Data" },
 ];
 
 export function Navbar() {

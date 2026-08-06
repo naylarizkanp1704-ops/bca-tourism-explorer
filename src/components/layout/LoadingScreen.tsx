@@ -17,7 +17,7 @@ export function LoadingScreen({ progress = 0 }: { progress?: number }) {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.15, duration: 0.3 }}
       >
-        Loading Tourism Intelligence Explorer&hellip;
+        Memuat Tourism Intelligence Explorer&hellip;
       </motion.p>
       <div className="w-48 h-1 bg-bca-border rounded-full mt-5 overflow-hidden">
         <motion.div

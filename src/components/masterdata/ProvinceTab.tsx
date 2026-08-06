@@ -53,7 +53,7 @@ export function ProvinceTab({
           population: p.population,
           trips: filters.year === "2024" ? t.trips2024 : t.trips2025,
           growth: t.growth,
-          kspn: String(p.kspn || "").startsWith("Y") ? "Yes" : "No",
+          kspn: String(p.kspn || "").startsWith("Y") ? "Ya" : "Tidak",
           hub: p.hub,
           topDest: topDest ? topDest.name : "\u2014",
           opportunity: opportunityFlag(p, data).label,
@@ -83,13 +83,13 @@ export function ProvinceTab({
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
       <GlassCard className="lg:col-span-2 p-5">
-        <p className="text-xs font-semibold text-bca-ink mb-3">Click a province to sync with the table &rarr;</p>
+        <p className="text-xs font-semibold text-bca-ink mb-3">Klik provinsi untuk sinkron dengan tabel &rarr;</p>
         <MiniMap selectedName={selectedName} onSelect={setSelectedName} />
         {selectedName && (
           <div className="mt-4 p-3 bg-bca-soft rounded-xl">
             <p className="text-sm font-semibold text-bca-ink">{selectedName}</p>
             <p className="text-xs text-bca-sub mt-1">
-              Trip Jan-Jun 2025: {fmtNum(data.trips[selectedName]?.trips2025)} &middot; Growth +{data.trips[selectedName]?.growth}%
+              Trip Jan-Jun 2025: {fmtNum(data.trips[selectedName]?.trips2025)} &middot; Pertumbuhan +{data.trips[selectedName]?.growth}%
             </p>
           </div>
         )}
@@ -97,7 +97,7 @@ export function ProvinceTab({
 
       <GlassCard className="lg:col-span-3 p-5 overflow-x-auto">
         <div className="flex items-center justify-between mb-3">
-          <p className="text-xs font-semibold text-bca-ink">{rows.length} provinces</p>
+          <p className="text-xs font-semibold text-bca-ink">{rows.length} provinsi</p>
           <button
             onClick={() =>
               downloadCSV(
@@ -114,12 +114,12 @@ export function ProvinceTab({
         <table className="w-full text-xs min-w-[720px]">
           <thead className="sticky top-0 bg-white/95">
             <tr className="border-b border-bca-border">
-              <SortHeader label="Province" sortKey="province" active={sortKey === "province"} dir={sortDir} onClick={toggleSort} />
-              <SortHeader label="Population" sortKey="population" active={sortKey === "population"} dir={sortDir} onClick={toggleSort} />
-              <SortHeader label="Trips" sortKey="trips" active={sortKey === "trips"} dir={sortDir} onClick={toggleSort} />
-              <SortHeader label="Growth" sortKey="growth" active={sortKey === "growth"} dir={sortDir} onClick={toggleSort} />
+              <SortHeader label="Provinsi" sortKey="province" active={sortKey === "province"} dir={sortDir} onClick={toggleSort} />
+              <SortHeader label="Populasi" sortKey="population" active={sortKey === "population"} dir={sortDir} onClick={toggleSort} />
+              <SortHeader label="Trip" sortKey="trips" active={sortKey === "trips"} dir={sortDir} onClick={toggleSort} />
+              <SortHeader label="Pertumbuhan" sortKey="growth" active={sortKey === "growth"} dir={sortDir} onClick={toggleSort} />
               <SortHeader label="KSPN" sortKey="kspn" active={sortKey === "kspn"} dir={sortDir} onClick={toggleSort} />
-              <SortHeader label="Top Destination" sortKey="topDest" active={sortKey === "topDest"} dir={sortDir} onClick={toggleSort} />
+              <SortHeader label="Destinasi Utama" sortKey="topDest" active={sortKey === "topDest"} dir={sortDir} onClick={toggleSort} />
               <SortHeader label="Opportunity" sortKey="opportunity" active={sortKey === "opportunity"} dir={sortDir} onClick={toggleSort} />
             </tr>
           </thead>
@@ -151,10 +151,10 @@ export function ProvinceTab({
           </tbody>
         </table>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-bca-soft">
-          <p className="text-[11px] text-bca-sub">Page {pageNum} of {totalPages}</p>
+          <p className="text-[11px] text-bca-sub">Halaman {pageNum} dari {totalPages}</p>
           <div className="flex gap-2">
-            <button disabled={pageNum <= 1} onClick={() => setPageNum((n) => n - 1)} className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border disabled:opacity-30 text-bca-sub">Prev</button>
-            <button disabled={pageNum >= totalPages} onClick={() => setPageNum((n) => n + 1)} className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border disabled:opacity-30 text-bca-sub">Next</button>
+            <button disabled={pageNum <= 1} onClick={() => setPageNum((n) => n - 1)} className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border disabled:opacity-30 text-bca-sub">Sebelumnya</button>
+            <button disabled={pageNum >= totalPages} onClick={() => setPageNum((n) => n + 1)} className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border disabled:opacity-30 text-bca-sub">Berikutnya</button>
           </div>
         </div>
       </GlassCard>
