@@ -12,10 +12,10 @@ export function ReferencesTab() {
         <thead>
           <tr className="border-b border-bca-border">
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Dataset</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Institusi</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Tahun</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Institution</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Year</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Status</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Tautan</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Link</th>
           </tr>
         </thead>
         <tbody>
@@ -25,12 +25,12 @@ export function ReferencesTab() {
               <td className="px-3 py-2.5 text-slate-700">{r.organization}</td>
               <td className="px-3 py-2.5 text-slate-700">{r.year}</td>
               <td className="px-3 py-2.5">
-                <span className="text-[10px] font-semibold text-white px-2 py-1 rounded-full bg-bca-accent">Resmi</span>
+                <span className="text-[10px] font-semibold text-white px-2 py-1 rounded-full bg-bca-accent">Official</span>
               </td>
               <td className="px-3 py-2.5">
                 {r.url ? (
                   <a href={r.url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-bca-primary font-medium hover:underline">
-                    Sumber <ExternalLink size={11} />
+                    Source <ExternalLink size={11} />
                   </a>
                 ) : (
                   <span className="text-slate-400">&mdash;</span>

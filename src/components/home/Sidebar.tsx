@@ -42,7 +42,7 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
             <div>
               <p className="text-[11px] font-semibold text-bca-secondary uppercase tracking-wide">Province</p>
               <h2 className="text-xl font-bold text-bca-ink mt-0.5">{province.province}</h2>
-              <p className="text-xs text-bca-sub mt-0.5">{province.island} &middot; Ibu kota {province.capital}</p>
+              <p className="text-xs text-bca-sub mt-0.5">{province.island} &middot; Capital: {province.capital}</p>
             </div>
             <button
               onClick={onClose}
@@ -55,9 +55,9 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
 
           <div className="px-6 py-5 space-y-6">
             <div className="grid grid-cols-3 gap-3">
-              <Stat label="Populasi" value={fmtCompact(province.population)} />
+              <Stat label="Population" value={fmtCompact(province.population)} />
               <Stat label="Trip '25" value={fmtCompact(trip?.trips2025)} />
-              <Stat label="Pertumbuhan" value={trip ? `+${trip.growth}%` : "-"} accent />
+              <Stat label="Growth" value={trip ? `+${trip.growth}%` : "-"} accent />
             </div>
 
             {chartData.length > 0 && (
@@ -90,7 +90,7 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
               <div>
                 <div className="flex items-center gap-1.5 mb-2.5">
                   <MapPin size={13} className="text-bca-secondary" />
-                  <p className="text-[11px] font-semibold text-bca-ink uppercase tracking-wide">Destinasi ({dests.length})</p>
+                  <p className="text-[11px] font-semibold text-bca-ink uppercase tracking-wide">Destinations ({dests.length})</p>
                 </div>
                 <div className="space-y-1.5">
                   {dests.slice(0, 8).map((d) => (
@@ -107,7 +107,7 @@ export function Sidebar({ provinceName, onClose }: { provinceName: string | null
             )}
 
             <div className="rounded-xl p-4 bg-gradient-to-br from-bca-primary/10 to-bca-secondary/10">
-              <p className="text-[11px] font-semibold text-bca-primary uppercase tracking-wide mb-1.5">Artinya Buat BCA?</p>
+              <p className="text-[11px] font-semibold text-bca-primary uppercase tracking-wide mb-1.5">So What for BCA?</p>
               <p className="text-[13px] text-bca-ink leading-relaxed">
                 {String(province.kspn || "").startsWith("Y")
                   ? "Prioritaskan ekspansi QRIS merchant & travel-card bundling di destinasi KSPN provinsi ini sebelum kompetitor masuk."

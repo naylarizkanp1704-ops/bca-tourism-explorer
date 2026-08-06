@@ -8,7 +8,7 @@ export function DestinationGrowthChart({ rows }: { rows: DestinationGrowthRow[] 
 
   return (
     <GlassCard className="p-6">
-      <p className="text-xs font-semibold text-bca-ink mb-1">Destinasi yang diproyeksikan tumbuh signifikan di 2026</p>
+      <p className="text-xs font-semibold text-bca-ink mb-1">Destinations Projected to Grow Significantly in 2026</p>
       <p className="text-[10px] text-bca-sub mb-4">{source}</p>
       <div style={{ height: Math.max(260, data.length * 32) }}>
         <ResponsiveContainer width="100%" height="100%">

@@ -20,7 +20,7 @@ export function AccommodationSection({ data }: { data: AccommodationData }) {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <GlassCard className="p-6">
-          <p className="text-xs font-semibold text-bca-ink mb-1">Top 10 Provinsi — Jumlah Hotel Berbintang</p>
+          <p className="text-xs font-semibold text-bca-ink mb-1">Top 10 Provinces — Star Hotel Count</p>
           <p className="text-[10px] text-bca-sub mb-4">
             BPS 2024, dikompilasi via IndonesiaBaik.id/Komdigi &amp; Kompas TV — hanya top 10, 28 provinsi lain tidak
             ditampilkan (bukan kosong/nol).
@@ -38,7 +38,7 @@ export function AccommodationSection({ data }: { data: AccommodationData }) {
         </GlassCard>
 
         <GlassCard className="p-6">
-          <p className="text-xs font-semibold text-bca-ink mb-1">Top 10 Provinsi — Rata-rata Lama Menginap</p>
+          <p className="text-xs font-semibold text-bca-ink mb-1">Top 10 Provinces — Average Length of Stay</p>
           <p className="text-[10px] text-bca-sub mb-4">Hotel berbintang, seluruh tamu, BPS 2024 (via Databoks/Katadata)</p>
           <div className="space-y-2.5">
             {data.top10LengthOfStay.map((s, i) => (
@@ -48,7 +48,7 @@ export function AccommodationSection({ data }: { data: AccommodationData }) {
                   <span className="text-sm font-medium text-bca-ink">{s.province}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-bold text-bca-primary">{s.nights} malam</span>
+                  <span className="text-sm font-bold text-bca-primary">{s.nights} nights</span>
                   {s.yoyChange && <p className="text-[10px] text-bca-accent">{s.yoyChange} YoY</p>}
                 </div>
               </div>
@@ -62,7 +62,7 @@ export function AccommodationSection({ data }: { data: AccommodationData }) {
           <div className="flex items-start gap-3">
             <AlertTriangle size={18} className="text-amber-600 shrink-0 mt-0.5" />
             <div>
-              <p className="text-xs font-semibold text-amber-800">Sumber Non-Resmi / Komersial</p>
+              <p className="text-xs font-semibold text-amber-800">Non-Official / Commercial Source</p>
               <p className="text-sm font-bold text-bca-ink mt-1">{data.roomRateCommercial.value}</p>
               <p className="text-xs text-bca-ink mt-1">{data.roomRateCommercial.indicator}</p>
               <p className="text-[11px] text-amber-700 mt-2">

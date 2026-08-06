@@ -22,14 +22,14 @@ export default function Financials() {
     >
       <div className="min-h-full pb-20">
         <PageHeader
-          eyebrow="Angka di balik rekomendasi"
+          eyebrow="Show me the money"
           title="Financials"
           desc="Hasil kinerja resmi BCA FY2024, ditambah model transparan peluang koridor pariwisata QRIS — input resmi dan asumsi tim dipisahkan secara jelas."
         />
 
         <div className="max-w-[1200px] mx-auto px-4 md:px-0 space-y-12">
           <section>
-            <SectionTitle>Laporan Keuangan Resmi BCA (FY2024)</SectionTitle>
+            <SectionTitle>BCA Official Financial Statements (FY2024)</SectionTitle>
             <p className="text-xs text-bca-sub -mt-2 mb-4">
               Sumber: konferensi pers hasil kinerja akhir tahun BCA, 23 Jan 2025 — disilang-cek ke berbagai media
               finansial independen tanpa ditemukan perbedaan angka.
@@ -43,7 +43,7 @@ export default function Financials() {
           </section>
 
           <section>
-            <SectionTitle>Model Proyeksi Finansial — Peluang Koridor Pariwisata QRIS</SectionTitle>
+            <SectionTitle>Financial Projection Model — QRIS Tourism-Corridor Opportunity</SectionTitle>
             <ProjectionModel data={data.projectionModel} />
           </section>
         </div>

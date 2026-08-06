@@ -45,7 +45,7 @@ export default function MasterData() {
     >
       <div className="min-h-full pb-16">
         <PageHeader
-          eyebrow="Pusat Bukti"
+          eyebrow="Evidence Center"
           title="Master Data Center"
           desc="Jelajahi setiap dataset pendukung yang digunakan dalam rekomendasi — bersumber jelas, dapat difilter, dan dapat diekspor."
         />

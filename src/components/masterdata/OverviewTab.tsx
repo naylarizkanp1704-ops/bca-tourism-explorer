@@ -19,7 +19,7 @@ export function OverviewTab({ filteredProvinces }: { filteredProvinces: Province
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
       <GlassCard className="lg:col-span-3 p-6">
-        <p className="text-xs font-semibold text-bca-ink mb-4">Top 5 provinsi berdasarkan volume trip domestik (Jan-Jun 2025)</p>
+        <p className="text-xs font-semibold text-bca-ink mb-4">Top 5 Provinces by Domestic Trip Volume (Jan-Jun 2025)</p>
         <div className="h-64">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={chartData} layout="vertical" margin={{ top: 0, right: 24, left: 8, bottom: 0 }}>
@@ -32,7 +32,7 @@ export function OverviewTab({ filteredProvinces }: { filteredProvinces: Province
         </div>
       </GlassCard>
       <GlassCard className="lg:col-span-2 p-6">
-        <p className="text-xs font-semibold text-bca-ink mb-4">Apa isi halaman ini (dan apa yang bukan)</p>
+        <p className="text-xs font-semibold text-bca-ink mb-4">What This Page Is (and Isn&apos;t)</p>
         <div className="space-y-3 text-[12px] text-slate-700 leading-relaxed">
           <p>Master Data Center ini menampilkan setiap dataset terverifikasi di balik rekomendasi — tidak ada yang diestimasi di sini.</p>
           <p>Tab dengan data real: <b>Province</b>, <b>Destination</b>, <b>Payment (nasional)</b>, <b>References</b>.</p>

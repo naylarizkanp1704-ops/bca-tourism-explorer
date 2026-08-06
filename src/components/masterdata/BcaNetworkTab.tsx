@@ -19,7 +19,7 @@ export function BcaNetworkTab() {
         ))}
       </div>
       <UnavailableState
-        title="Data lokasi Branch/ATM/CRM & Coverage Ratio tidak tersedia"
+        title="Branch / ATM / CRM Location Data & Coverage Ratio Not Available"
         explanation="Annual Report BCA mengungkapkan total nasional untuk cabang dan ATM, tapi bukan breakdown per provinsi dengan koordinat. Tanpa itu, coverage ratio 'Populasi / Cabang' atau 'Trip / Cabang' per provinsi yang real tidak bisa dihitung — membuatnya berarti mengarang jumlah cabang, yang tidak diperbolehkan standar bukti proyek ini."
         whatIsAvailable="Yang ditampilkan di atas itu real: pengguna myBCA, volume transaksi, dan jumlah transaksi harian, semuanya dari Annual Report 2024 BCA / siaran pers resmi. Tag 'Opportunity' di tabel Province hanya memakai pertumbuhan trip + status KSPN (keduanya terverifikasi), bukan jejak cabang."
       />

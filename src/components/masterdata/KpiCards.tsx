@@ -14,12 +14,12 @@ export function KpiCards({ filteredProvinces, filteredDestinations }: { filtered
     : "-";
 
   const cards = [
-    { label: "Total Trip Domestik (terfilter)", value: fmtCompact(totalTrips), sub: "Kumulatif Jan-Jun 2025", icon: TrendingUp },
-    { label: "Rata-rata Belanja Nasional/Trip", value: "Rp2.32 Jt", sub: "Full-year 2024, BPS (nasional saja)", icon: Wallet },
-    { label: "Rata-rata Lama Menginap", value: "3.74 malam", sub: "Full-year 2024, BPS (nasional saja)", icon: MapPin },
-    { label: "Destinasi (terfilter)", value: String(filteredDestinations.length), sub: "dari 106 total", icon: Sparkles },
-    { label: "Rata-rata Pertumbuhan (terfilter)", value: `+${avgGrowth}%`, sub: "vs nasional +17.70%", icon: BadgeCheck },
-    { label: "Pengguna QRIS (nasional)", value: "57 Jt", sub: "Sem I 2025, BI — belum ada breakdown provinsi", icon: CreditCard },
+    { label: "Total Domestic Trips (filtered)", value: fmtCompact(totalTrips), sub: "Jan-Jun 2025 cumulative", icon: TrendingUp },
+    { label: "Avg. National Spending/Trip", value: "Rp2.32 Jt", sub: "Full-year 2024, BPS (national only)", icon: Wallet },
+    { label: "Avg. Length of Stay", value: "3.74 nights", sub: "Full-year 2024, BPS (national only)", icon: MapPin },
+    { label: "Destinations (filtered)", value: String(filteredDestinations.length), sub: "of 106 total", icon: Sparkles },
+    { label: "Avg. Growth (filtered)", value: `+${avgGrowth}%`, sub: "vs national +17.70%", icon: BadgeCheck },
+    { label: "QRIS Users (national)", value: "57 Jt", sub: "Sem I 2025, BI — no province split published", icon: CreditCard },
   ];
 
   return (

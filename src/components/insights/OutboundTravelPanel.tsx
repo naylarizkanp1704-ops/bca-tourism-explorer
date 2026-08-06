@@ -10,7 +10,7 @@ export function OutboundTravelPanel({ mix, crossBorder }: { mix: OutboundMixRow[
       <GlassCard className="lg:col-span-3 p-6">
         <div className="flex items-center gap-2 mb-4">
           <Globe2 size={16} className="text-bca-primary" />
-          <p className="text-xs font-semibold text-bca-ink">Sebaran destinasi outbound WNI</p>
+          <p className="text-xs font-semibold text-bca-ink">Outbound WNI Destination Mix</p>
         </div>
         <div className="space-y-4">
           {mix.map((m) => (

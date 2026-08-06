@@ -47,7 +47,7 @@ export default function About() {
       className="absolute inset-0 top-[76px] overflow-y-auto"
     >
       <div className="max-w-3xl mx-auto px-6 pb-20">
-        <PageHeader eyebrow="Transparansi" title="Tentang Proyek Ini" desc="Bagaimana basis bukti ini dibangun, dan di mana batasannya." />
+        <PageHeader eyebrow="Transparency" title="About This Project" desc="Bagaimana basis bukti ini dibangun, dan di mana batasannya." />
         <div className="space-y-4 mt-4">
           {SECTIONS.map((s) => (
             <GlassCard key={s.title} className="p-6">
@@ -56,13 +56,6 @@ export default function About() {
             </GlassCard>
           ))}
         </div>
-        <GlassCard className="p-6 mt-4 bg-gradient-to-br from-bca-primary/5 to-bca-secondary/5">
-          <p className="text-sm font-bold text-bca-ink">Workbook sumber</p>
-          <p className="text-[13px] text-bca-sub mt-2 leading-relaxed">
-            MASTER_TOURISM_DATABASE_FINAL.xlsx — 10 sheet, setiap baris membawa Official Source / Publication / URL
-            masing-masing. Lihat sheet 09_Reference_Master dan 10_QA_Audit_Log pada workbook untuk audit trail lengkap.
-          </p>
-        </GlassCard>
       </div>
     </motion.main>
   );

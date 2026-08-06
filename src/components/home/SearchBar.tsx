@@ -37,7 +37,7 @@ export function SearchBar({ onSelect }: { onSelect: (r: SearchResult) => void })
           onChange={(e) => setQ(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setTimeout(() => setFocused(false), 150)}
-          placeholder="Cari provinsi atau destinasi..."
+          placeholder="Search province or destination..."
           aria-label="Search province or destination"
           className="w-full bg-transparent outline-none text-sm text-bca-ink placeholder:text-bca-sub"
         />

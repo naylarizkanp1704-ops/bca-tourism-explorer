@@ -13,7 +13,7 @@ export function HeroOverlay({ visible, onExplore }: { visible: boolean; onExplor
           className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-6 pointer-events-none"
         >
           <span className="text-bca-primary text-xs md:text-sm font-semibold tracking-[0.2em] uppercase mb-4">
-            Platform Intelijen Geospasial Interaktif
+            Interactive Geospatial Intelligence
           </span>
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
@@ -21,7 +21,7 @@ export function HeroOverlay({ visible, onExplore }: { visible: boolean; onExplor
             transition={{ delay: 0.1, duration: 0.4 }}
             className="text-bca-ink text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.08] max-w-3xl"
           >
-            Jelajahi Cerita <br className="hidden md:block" /> Perjalanan Domestik Indonesia
+            Explore Indonesia&apos;s <br className="hidden md:block" /> Domestic Travel Story
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -38,7 +38,7 @@ export function HeroOverlay({ visible, onExplore }: { visible: boolean; onExplor
             onClick={onExplore}
             className="pointer-events-auto mt-8 bg-bca-primary text-white font-semibold text-sm px-7 py-3.5 rounded-full hover:scale-[1.03] transition-transform duration-200 flex items-center gap-2 shadow-lg"
           >
-            Jelajahi Indonesia <ArrowRight size={16} />
+            Explore Indonesia <ArrowRight size={16} />
           </motion.button>
         </motion.div>
       )}

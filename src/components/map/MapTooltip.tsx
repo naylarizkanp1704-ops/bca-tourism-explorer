@@ -32,9 +32,9 @@ export function MapTooltip({ name, x, y }: Props) {
               <p className="text-xs font-medium mt-0.5 text-bca-accent">+{trip.growth}% vs 2024</p>
             </>
           ) : (
-            <p className="text-xs text-bca-sub mt-1">Klik untuk eksplorasi</p>
+            <p className="text-xs text-bca-sub mt-1">Click to explore</p>
           )}
-          <p className="text-[10px] text-bca-sub/70 mt-1.5">Klik untuk eksplorasi &rarr;</p>
+          <p className="text-[10px] text-bca-sub/70 mt-1.5">Click to explore &rarr;</p>
         </motion.div>
       )}
     </AnimatePresence>

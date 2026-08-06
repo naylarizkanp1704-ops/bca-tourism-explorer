@@ -1,15 +1,8 @@
 import { GlassCard } from "@/components/ui/GlassCard";
 import type { NationalKPI } from "@/types";
 
-// Keys must match the "Category" column values in the workbook exactly (03_National_KPI sheet) —
-// translating the keys themselves would break the data match, so only the display label is Indonesian.
+// Keys must match the "Category" column values in the workbook exactly (03_National_KPI sheet).
 const CATEGORY_ORDER = ["International Context", "National Macro", "Digital Behaviour", "Outbound Travel"];
-const CATEGORY_LABEL_ID: Record<string, string> = {
-  "International Context": "Konteks Internasional",
-  "National Macro": "Makro Nasional",
-  "Digital Behaviour": "Perilaku Digital",
-  "Outbound Travel": "Perjalanan Outbound",
-};
 
 export function NationalKpiGrid({ items }: { items: NationalKPI[] }) {
   const grouped = CATEGORY_ORDER.map((cat) => ({
@@ -21,7 +14,7 @@ export function NationalKpiGrid({ items }: { items: NationalKPI[] }) {
     <div className="space-y-8">
       {grouped.map((g) => (
         <div key={g.category}>
-          <p className="text-xs font-semibold text-bca-secondary uppercase tracking-wide mb-3">{CATEGORY_LABEL_ID[g.category] ?? g.category}</p>
+          <p className="text-xs font-semibold text-bca-secondary uppercase tracking-wide mb-3">{g.category}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {g.rows.map((r) => (
               <GlassCard key={r.indicator} className="p-5">

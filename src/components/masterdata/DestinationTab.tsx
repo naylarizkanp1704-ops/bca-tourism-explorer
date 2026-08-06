@@ -19,11 +19,11 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
   return (
     <GlassCard className="p-5 overflow-x-auto">
       <div className="flex items-center justify-between mb-3 gap-3">
-        <p className="text-xs font-semibold text-bca-ink">{rows.length} destinasi ditampilkan</p>
+        <p className="text-xs font-semibold text-bca-ink">{rows.length} destinations shown</p>
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder="Cari dalam hasil..."
+          placeholder="Search within results..."
           className="text-xs bg-bca-soft border border-bca-border rounded-lg px-3 py-1.5 outline-none focus:border-bca-primary"
         />
         <button
@@ -31,7 +31,7 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
             downloadCSV(
               "destination_master.csv",
               ["name", "province", "categories", "unesco", "kspn"],
-              rows.map((r) => ({ ...r, categories: r.categories.join(" | "), unesco: r.unesco ? "Ya" : "Tidak", kspn: r.kspn ? "Ya" : "Tidak" }))
+              rows.map((r) => ({ ...r, categories: r.categories.join(" | "), unesco: r.unesco ? "Yes" : "No", kspn: r.kspn ? "Yes" : "No" }))
             )
           }
           className="text-[11px] font-semibold px-3 py-1.5 rounded-lg border border-bca-border text-bca-sub hover:text-bca-primary hover:border-bca-primary transition-colors duration-200 shrink-0"
@@ -42,9 +42,9 @@ export function DestinationTab({ filters }: { filters: MDFilters }) {
       <table className="w-full text-xs min-w-[600px]">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Destinasi</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Provinsi</th>
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Kategori</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Destination</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Province</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Category</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">UNESCO</th>
             <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">KSPN</th>
           </tr>

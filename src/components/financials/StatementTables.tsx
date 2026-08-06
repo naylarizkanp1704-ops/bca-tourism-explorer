@@ -5,11 +5,11 @@ import type { IncomeStatementRow, CreditPortfolioRow } from "@/types";
 export function IncomeStatementTable({ rows }: { rows: IncomeStatementRow[] }) {
   return (
     <GlassCard className="p-5 overflow-x-auto">
-      <p className="text-xs font-semibold text-bca-ink mb-4">Laporan Laba Rugi — FY2024 (Konsolidasi)</p>
+      <p className="text-xs font-semibold text-bca-ink mb-4">Income Statement — FY2024 (Consolidated)</p>
       <table className="w-full text-sm min-w-[520px]">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Pos</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Line Item</th>
             <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">FY2024</th>
             <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">FY2023</th>
             <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">YoY</th>
@@ -35,15 +35,15 @@ export function CreditPortfolioTable({ rows }: { rows: CreditPortfolioRow[] }) {
     <GlassCard className="p-5 overflow-x-auto">
       <div className="flex items-center gap-2 mb-4">
         <TrendingUp size={15} className="text-bca-primary" />
-        <p className="text-xs font-semibold text-bca-ink">Portofolio Kredit &amp; Neraca — Des 2024</p>
+        <p className="text-xs font-semibold text-bca-ink">Credit Portfolio &amp; Balance Sheet — Dec 2024</p>
       </div>
       <table className="w-full text-sm min-w-[560px]">
         <thead>
           <tr className="border-b border-bca-border">
-            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Pos</th>
-            <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Nilai</th>
+            <th className="text-left text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Line Item</th>
+            <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">Value</th>
             <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">YoY</th>
-            <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">% dari Total Kredit</th>
+            <th className="text-right text-[10px] font-semibold text-bca-sub uppercase px-3 py-3">% of Total Credit</th>
           </tr>
         </thead>
         <tbody>
